@@ -226,6 +226,38 @@ import {add} from './compute';
 * NodeJS Async Operations
 Network related operations doesn't use libuv Threads
 
+==================================================
+
+node.js Event Emitter
+
+=================
+
+* fs sync
+* fs callback
+* fs stream based
+	
+Where can i use NodeJS?
+1) Real time application
+2) Streaming API ==> Netflix
+	Squid Game chunk of data has to pushed to client; client buffers
+3) Traditional Web application ==> server rendered pages
+4) build RESTful Web services
+5) GraphQL services
+
+==============
+
+npm i -g learnyounode
+
+learnyounode
+
+=======================
+
+
+
+
+
+
+
 
 
 
