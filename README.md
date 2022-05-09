@@ -136,3 +136,99 @@ setTimeout(function timed() {
 
 ===========================================
 
+NodeJS V8 Memory Structure
+* ResidentSet
+* Code Segment
+ ==> JIT compiler compiles code blocks
+
+* Heap
+	1) New Generation [ SemiSpace 1, Semispace] ==> In Java ==> Surviour state 1 and Surviour state 2
+	2) Old Generation
+* Stack
+* Large Objects [Code, MMap]
+
+
+C#, JS and Java or any technology which uses Virtual machine doesn't allow pointers
+
+
+node --min_semi_space_size(intial)  --max_old_space_size(max) --stack-size(size) server.js
+
+===================================================================
+
+nodeJs provides built-in modules crypto, fs, http, path, repl, ...
+
+Module System:
+
+1) IIFE ==> Immediately invoke function expression
+
+let ShoppingModule = (function() { 
+	let data = 100;
+	function doTask() {
+
+	}
+	return {
+		doTask
+	}
+})();
+
+
+let paymentModule = (function() { 
+	let data = 999;
+	let done = false;
+	function doTask() {
+
+	}
+	return {
+		done,
+		data,
+		doTask
+	}
+})();
+
+ShoppingModule.data ==> 100 // not visible
+paymentModule.data ==> 999
+
+
+2) CommonJS module system ==> default  module system in NodeJS
+
+	compute.js
+
+	module.exports.add = function(){ 
+	}
+
+	function sub() {
+
+	}
+
+	other.js
+
+	let compute = require('./compute');
+
+
+	can access compute.add() but not compute.sub()
+
+3) ESM ==> ES 6 module system
+
+export const add = function() {}
+
+other.js
+
+import {add} from './compute';
+
+
+4) AMD
+5) System
+6) UMD ==> wrapper for different module system to dynamically decide which module system has to be used
+
+
+* NodeJS Threads concept
+
+* NodeJS Async Operations
+Network related operations doesn't use libuv Threads
+
+
+
+
+
+
+
