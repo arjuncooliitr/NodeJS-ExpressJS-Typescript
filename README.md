@@ -318,6 +318,35 @@ pm2 monit
 pm2 ps
 
 ==========================
+ 
+Debug :
+
+node --inspect-brk server.js
+
+
+chrome browser
+
+about:inspect in addressbar
+
+===========================================
+
+
+Node Application
+Package Managers:
+1) NPM
+installs by default along with node installation
+2) YARN
+npm install yarn -g
+3) PNPM
+npm install pnpm -g
+
+
+* download 3rd party dependencies from repo
+* publish to repo
+* to run scripts [ start, build, test, lint]
+
+Node by default installs NPM
+
 
 
 
