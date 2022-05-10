@@ -250,12 +250,51 @@ npm i -g learnyounode
 
 learnyounode
 
-=======================
+========================
+
+Day 2
+
+Recap:
+NodeJS --> What , Why [ Non blocking I/O ]
+* Event loop, V8 and libuv
+* MicroTask and MacroTask Callback Queue ==> Stack
+* RSS --> Heap [ New Gen {SS1, SS2}, Old Generation], Stack, Large Objects, Code Segment
+
+* CommonJS module system 
+
+* Threads [ libuv Thread pool ]
+* Async Operations [ Network ]
+* crypto module
+* EventEmitter [ emit(), on("event")] ==> Observer Observable pattern
+* fs module [ readFileSync(), readFile() uses callback and createReadStream() ]
 
 
 
+Observable object will be on Heap area and will have list of observers
+
+emit()
+	for(Observer os in ObserversList) {
+		os.fn();
+	}
+
+===================
+
+ab -c 100 -n 1000 http://localhost:9000/
+
+npx autocannon -c 100 -p 10 http://localhost:9000/
 
 
+/**
+ * Represents a book.
+ * @constructor
+ * @param {string} title - The title of the book.
+ * @param {string} author - The author of the book.
+ */
+function Book(title, author) {
+}
+
+
+===========
 
 
 

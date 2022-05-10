@@ -8,7 +8,12 @@ const eventEmitter = new EventEmitter();
 // 2. emit() is used to trigger an event
 
 eventEmitter.on('start', number => {
-	console.log("event start " + number);
+	console.log("event start1 " + number);
+});
+
+
+eventEmitter.on('start', number => {
+	console.log("event start2 " + number);
 });
 
 eventEmitter.on('data', number => {
