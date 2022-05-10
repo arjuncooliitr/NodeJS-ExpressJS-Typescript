@@ -296,6 +296,28 @@ function Book(title, author) {
 
 ===========
 
+What if task is CPU  intensive operation?
+Run cpu intense operation on seperate thread [ not libuv thread ]
+
+==
+
+cluster module
+
+or
+
+npm install pm2 -g
+
+pm2 start server.js -i max
+
+pm2 restart <id> / all
+
+pm2 delete <id> / all
+
+pm2 monit
+
+pm2 ps
+
+==========================
 
 
 
