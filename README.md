@@ -347,6 +347,208 @@ npm install pnpm -g
 
 Node by default installs NPM
 
+myapp> npm init --y
+
+this initializes the node project
+* creates "package.json"
+
+{
+	"scripts": {
+		"start": "node ./app/server.js",
+		"test" : "jest / mocha / jasmine ... command",
+		"build" : "webpack "
+	},
+	"dependencies": {
+		// dependency required in production env also
+	},
+	"devDependencies" : {
+		// required only in development stage
+		// testing, lint
+	}
+}
+
+AAA ==> Assemble Action Assert
+
+npm i -D mocha chai request
+
+JS Unit Testing Framework:
+* Mocha
+* Jasmine
+* JEST
+
+https://www.chaijs.com/
+
+ "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "request": "^2.88.2"
+  }
+
+
+
+"mocha": "10.0.0", ==> exact version 10.0.0
+
+"mocha": "~10.0.0", ==> major version has to be 10
+
+"mocha": "^10.0.0", ==> any version equal or greater than 10.0.0
+
+node_modules folder is created in application having dependecies
+
+require('module') 
+
+* checks is it builtin node module
+* checks "node_modules" folder
+* checks parent "node_modules" folder ==> YARN workspaces
+
+==========
+
+add node_modules to .gitignore
+
+team member downloads and runs:
+
+npm install
+
+=============================================
+
+
+
+TypeScript
+
+JS engine understands only JS ==> ECMAScript 5
+
+ES 6 / 7, TypeScript, DART, CoffeeScript, LiveScript
+
+
+TransCompilers
+
+Babel ==> ES6/ESNext of JS to downward compatable JS
+
+TSC ==> .ts ==> .js
+
+npm i -g typescript
+
+tsc a.ts ==> a.js
+
+===
+
+tscexample> npm i typescipt 
+
+=======================
+
+Typescript:
+* provide an optional type system for JavaScript
+JS is loosely typed and dynamically typed
+
+var x = "a"; // x behaves like string
+x.toUpperCase();
+x = 10; // number
+x++;
+
+* code quality and understandability
+
+* catch errors at compile time instead of runtime
+
+* sort of document
+
+----------
+
+Basic Types
+* number
+* string
+* boolean
+
+let x:number = 10;
+
+x = "Test"; //error
+
+let name:string = "Harry";
+
+let flag:boolean = true;
+
+
+Complex Types:
+* enum
+* array
+* object
+
+enum Directions {
+	North = 'N',
+	East = 'E',
+	..
+}
+
+const direction:Directions = Directions.North;
+
+let person: {
+	name:string,
+	age:number
+} = {
+	"name" : "a",
+	"age" : 33
+};
+
+type Person = {
+	name:string,
+	age:number
+};
+
+let person:Person = {
+	"name" : "a",
+	"age" : 33
+}
+
+let people:[Person] = [
+{
+	"name" : "a",
+	"age" : 33
+},
+{
+	"name" : "b",
+	"age" : 31
+}
+]
+
+let data:[number] = [5,2,11,4];
+
+---
+
+Union Types:
+
+let course:string|number = "NodeJS";
+
+course = 21;
+
+-----------------
+
+npm i -g typescript
+
+Functions
+
+
+
+function add(a:number, b:number) : number | string {
+	return a + b;
+}
+
+
+add(4,5);
+
+//add("a", "b"); ==> error
+
+
+tsc file.ts ==> file.js
+
+node file.js
+
+========================================
+
+
+
+
+
+
+
+
 
 
 
