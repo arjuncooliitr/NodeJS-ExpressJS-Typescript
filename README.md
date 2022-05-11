@@ -497,6 +497,8 @@ let person:Person = {
 	"age" : 33
 }
 
+let people:Array<Person> = ...
+
 let people:[Person] = [
 {
 	"name" : "a",
@@ -524,6 +526,13 @@ npm i -g typescript
 
 Functions
 
+function add(a:number, b: number): void {
+	console.log("Result " + (a+b));
+}
+
+function add(a:number, b:number)   {
+	return a + b;
+}
 
 
 function add(a:number, b:number) : number | string {
@@ -541,6 +550,361 @@ tsc file.ts ==> file.js
 node file.js
 
 ========================================
+
+Day 3
+
+Recap:
+* NodeJS application ==> Package managers [ NPM, YARN, PNPM ], package.json {dependecies, dev-dependecies, scripts}
+
+node_modules:
+npm i package [ dependencies]
+npm i -D package [ devDep]
+
+
+Any executable modules install it globally
+npm i -g package [ global installation] ==> users folder/AppData/roaming/npm/...
+Example:
+npm i -g typescript
+any prompt> tsc file.ts
+
+JS testing Framework ==> Mocha
+Assertion Library ==> Chai
+
+describe(), it(), expect()
+
+--
+
+TypeScript
+
+* number
+* string
+* boolean
+* enum
+* array
+* object
+
+"any" type
+
+let myVar:any = 10; // valid
+
+myVar = "Good" ; //valid
+
+myVar = false; // valid
+
+--
+
+"unknown" type
+
+
+let myVar:unknown = 10; // valid
+
+myVar = "Good" ; //valid
+
+myVar = false; // valid
+
+-------------
+
+
+"any" vs "unknown"
+
+---
+
+function doTask(callback:any) {
+	callback();
+}
+
+doTask(100);
+
+--> RuntimeError; TypeError: callback is not a function. 100 is a nuber cannot be invoked as function...
+
+
+---
+
+"unknown" ==> need to perform type checking before using "unknown" type
+
+function doTask(callback:unknown) {
+	if(typeof callback === 'function') {
+		callback();
+	}
+}
+
+doTask(100);
+
+------------------------------------
+
+JSON ==> JavaScript Object Notation
+
+let obj = {
+	"id": 1,
+	"name": "Anil",
+	"age": 32
+}
+
+
+* Optional Properties ?
+
+function printUser(user: {firstName:string, lastName?:string}) {
+
+}
+
+printUser({"firstName": "Tom", "lastName": "Alter"});
+printUser({"firstName": "Thomas"});
+
+----------------------------------------------------------------
+* type
+
+
+type Person = {
+	name:string,
+	age:number
+};
+
+
+* interface Type
+
+--> to define a shape similar to "type"
+--> for behaviour contract ==> Realization relationship
+--> extendable
+
+
+interface Person {
+	name:string,
+	age:number
+};
+
+interface AppUser extends Person {
+	password:string
+	role:string
+}
+
+--
+
+interface Renderable {
+	render();
+}
+
+interface B {
+	render();
+}
+
+class DomRender implements Renderable, B {
+	..
+	render() {
+
+	}
+}
+
+class TestRenderer implements Renderable {
+	..
+	render() {
+
+	}
+}
+
+
+class NativeRenderer implements Renderable {
+	..
+	render() {
+
+	}
+}
+
+-------
+
+* "as" ==> Type Assertions
+
+
+interface Person {
+	name:string,
+	age:number
+};
+
+
+3rd party js function
+function getPerson() {
+	return {}
+}
+
+"typescript file"
+let person = getPerson();
+person.name   = "";  // Property "name" does not exist on type {}
+person.age   = ""; 
+
+Solution:
+let person = getPerson() as Person;
+person.name   = "";  // OK
+
+------------------
+
+const myDiv = document.getElementById("card") as HTMLDivElement;
+myDiv.innerHTML = "";
+
+----------------------------------
+
+* not - null Assertion Operatior (Postfix!)
+
+Without !:
+
+function doTask(x: string | null) {
+	if(x != null) {
+		console.log("Hello " + x.toUpperCase());
+	}
+}
+
+with !:
+function doTask(x: string | null) {
+	console.log(x!.toUpperCase());
+}
+
+--
+
+function doTask(x: string | null) {
+	console.log(x.toUpperCase());
+}
+tsc --strictNullChecks notnull1.ts
+notnull1.ts:2:14 - error TS2531: Object is possibly 'null'.
+
+2  console.log(x.toUpperCase());
+               ~
+Found 1 error.
+
+responseData!.map(user => {
+
+});
+
+--------------------------
+
+TypeScript Rest Parameters ==> o to n
+
+function getTotal(...numbers: number[]): number {
+	let total = 0;
+	numbers.forEach(num => total += num);
+	return total;
+}
+
+console.log(getTotal()); // 0
+console.log(getTotal(5,2,5)); // 12
+console.log(getTotal(100)); // 100
+
+Without Rest Parameters:
+
+function getTotal(numbers: number[]): number {
+
+}
+
+console.log(getTotal([])); // 0
+console.log(getTotal([5,2,5])); // 12
+console.log(getTotal([100])); // 100
+
+====
+// VARargs
+function insert(msg:string, ...data:number[]) {
+
+}
+
+======
+
+let data = [5,2,6,11,46,2];
+
+let [v1,...others] = data;
+
+======================================
+
+
+! avoids not null assertions ==> to tell compiler i am sure that data is not null
+
+data? ==> do this operation if not null
+
+function doTask( ) {
+	let x:string|null = null;
+	console.log(x?.toUpperCase());
+}
+
+doTask();
+
+========================
+
+
+Function types:
+
+let add:(x:number, y:number) => number;
+
+
+add = function(x: number, y: number)  {
+	return x + y;
+}
+
+---
+
+Promise API in typescript
+
+
+interface User {
+	id:number,
+	name:string
+}
+
+// Type alias
+type FetchData = (id:number) => Promise<User>
+
+function FetchData(id:number) {
+	return new Promise<User> ( (resolve, reject) => {
+		setTimeout(() => {
+			resolve({"id":20, "name": "Peter"});
+		},2000);
+ 	});
+}
+// sync call let res = FetchData(20); 
+
+FetchData(20).then(
+	data => console.log(data),
+	err => console.log("Boom :-(", err)
+);
+
+
+tsc --lib ES2015,dom PromiseExample.ts
+
+==
+
+fetch("http://jsonplaceholder.typicode.com/users")
+.then(
+	response => response.json()
+).then(data => {
+
+})
+.then( op => {
+
+})
+.then( result => {
+
+})
+
+===========
+
+npm i -g typescript
+
+====================================
+
+Resume @ 11:30
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
