@@ -930,6 +930,78 @@ Generic Functions
 npm run build
 npm start
 
+==
+
+CamelCase ==> forEach, MonogdbConnection
+
+interface, class, type ==> should start with UpperCase
+
+Functions, variables ==> should start with lowercase
+
+module of functions ==> lowercase
+
+=========================
+
+similar to filter HOF, create map() HOF
+filter() ==> subset
+
+Task to be done:
+
+map() ==> transform the data
+input:
+ {"id":1,"name":"iPhone","price":124447.44,"category" : "mobile"},
+    {"id":2,"name":"Onida","price":4444.44,"category" : "tv"},
+    {"id":3,"name":"OnePlus 6","price":98444.44,"category" : "mobile"},
+    {"id":4,"name":"HDMI connector","price":2444.00,"category" : "computer"},
+    {"id":5,"name":"Samsung","price":68000.00,"category" : "tv"}
+
+output:
+["iPhone", "Onida", "OnePlus 6", "Hdmi connector", "Samsung"]
+
+--
+
+input:
+ [5,6,2,11,4];
+
+output:
+[10, 12, 4, 22, 8];
+
+=================================================================
+
+
+* HOF => function returning a function ==> Closure
+
+Closure ==> returned function can access all the members of outer function
+
+function adder(base, value) {
+	return base + value;
+}
+
+adder(5,2);
+adder(5,3);
+
+--
+
+
+function adder(base) {
+	return function(value) {
+		return base + value;
+	}
+}
+
+let fiveAdder = adder(5);
+fiveAdder(2);
+fiveAdder(7);
+fiveAdder(1);
+
+===
+
+React.memo() ==> HOC ==> closure
+
+=============
+
+
+
 
 
 
