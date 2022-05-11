@@ -885,18 +885,50 @@ npm i -g typescript
 
 ====================================
 
-Resume @ 11:30
+High Order Functions in TypeScript
+* function accepting function as argument
+* function returning a function
 
 
+let data = [6,3,2,11];
+
+for(i = 0; i< data.length; i++) {
+	console.log(data[i]);
+}
+
+for(i = 0; i< data.length; i++) {
+	alert(data[i]);
+}
+
+HOF forEach
+
+function forEach(elems, action) {
+	for(i = 0; i< elems.length; i++) {
+		action(elems[i]);
+	}
+}
+
+forEach(data, console.log);
+forEach(data, alert);
 
 
+===
 
+tsexample> tsc --init
 
+creates tsconfig.json
 
+ "outDir": "dist", 
+  "lib": ["ES2015"]
 
+ "sourceMap": true, ==> a.ts ==> a.map.js ==> a.js
 
+=======
 
+Generic Functions
 
+npm run build
+npm start
 
 
 
