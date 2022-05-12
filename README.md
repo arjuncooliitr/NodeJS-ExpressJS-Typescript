@@ -1347,6 +1347,90 @@ npm i -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 https://eslint.org/docs/rules/
 
 
+Decorators ==> @ ==> Decorator Design Pattern
+Angular, Mobx,
+
+@Component({
+	"selector": "card",
+	"stleyUrl":
+	"templateUrl" : './card.html'
+})
+class ProductComponent extends Component {
+	products:Product[];
+	addProduct() {}
+}
+
+@Component({
+	"selector": "card",
+	"styleUrl":
+	"templateUrl" : './card.html'   <card/></card>
+})
+class CustomerComponent extends Component {
+	customers:Customer[];
+	
+}
+
+Mobx
+@observable
+public class Product {}
+
+============
+
+@Required()
+private firstName:string;
+
+@Required()
+private lastName:string;
+
+=============================================
+
+Decorators are functions
+
+function sealed(target:any) {
+	Object.seal(target); // not allow any new fields / properties to be added to target
+}
+
+@sealed
+class Product {
+	id
+	name
+}
+
+let p = new Product(...)
+
+
+--
+
+let p = {"id": 1, "name": "test"};
+
+at runtime
+
+p.price = 2222; // supports
+
+Object.seal(p); // p.price = 2222; ==> ignored
+
+==
+
+{}
+
+Commonly we write decorators as HOF with closure ==> Decorator factory
+
+===============================
+@Course({
+	subject: "ExpressJS"
+})
+class Student {
+	firstName
+	lastName
+}
+
+
+
+
+student will have firstName, lastName and subject
+
+===================
+
 
 
 

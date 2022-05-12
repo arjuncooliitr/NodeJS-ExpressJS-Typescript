@@ -3,6 +3,11 @@ import {random} from 'lodash';
 import {forEach, fibanocci, memoize} from './lib';
 import Product  from './Product';
 
+import Student from './Student';
+
+let s:Student = new Student("James");
+console.log(s.firstName, s["subject"]);
+
 console.log(random(1,100));
 
 const nos:number[] = [5,6,2,11,4];
