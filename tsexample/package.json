@@ -12,6 +12,14 @@
   "author": "Banuprakash",
   "license": "ISC",
   "dependencies": {
+    "@types/lodash": "^4.14.182",
+    "lodash": "^4.17.21",
     "typescript": "^4.6.4"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.32",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "eslint": "^8.15.0"
   }
 }

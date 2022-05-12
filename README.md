@@ -1000,18 +1000,316 @@ React.memo() ==> HOC ==> closure
 
 =============
 
+Cache the computed result ==> Memoization
+
+<number,Product>
+
+getProduct(4) ==> Product with {"id":4,"name":"HDMI connector","price":2444.00,"category" : "computer"}
+
+<number, number>	
+fibanocci
+
+=============================
+
+ESLint:
+npm i -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+
+-------------
+
+Day 4
+
+Recap: TypeScript
+* basic types ==> string, number and boolean
+* enum, array, object
+* type, interface
+* any, unknown types
+* as, ?, !
+* Rest operators ==> VarArgs
+* HOF, generics <>
+	forEach, filter, map ==> OCP ==> Open for extension and closed for Change
+
+export function filter<T>(elems:T[], predicate:(elem:T) => boolean): T[] {
+    let result:T[] = [];
+    forEach(elems, elem => {
+        if(predicate(elem)) {
+            result.push(elem);
+        }
+    });
+    return result;
+}
+
+
+function test<T>(elem:T) {
+
+}
+
+test("a"); // T acts like string
+test(10); // T acts like number
+
+function merge<U, V> (obj1: U, obj2: V) {
+	return {
+		...obj1,
+		...obj2
+	}
+}
+
+let person = merge( {"name": "Jack"}, {"age": 25});
+
+person will have {name: "Jack", "age": 25}
+
+let p = merge({"name": "Jack"}, 25); // works
 
 
 
+function merge<U extends object, V extends object> (obj1: U, obj2: V) {
+
+==========================================
+
+Product, Mobile is a Product, Tv is Product
+
+function print<T extends Product>(elem:T) {
+
+}
+
+to print i can pass only Product or Mobile or Tv
+
+================================================
+
+Task ==> map()
+
+=====================
+ES 6 supports class
+
+Typescript
+* class
+
+class Book {
+	title:string; // instance variable
+	price:number; // instance variable
+
+	constructor(title:string = "", price:number = 0.0) {
+		this.title = title;
+		this.price = price;
+	}
+
+	// instance method
+	getTitle() {
+		return this.title;
+	}
+
+}
+
+let b = new Book();
+
+let b1 = new Book("typescript", 1200.00); ==> memory is allocated for title and price
+let b2 = new Book("express", 4200.00); ==> memory is allocated for title and price
+ 
+b1.getTitle(); // context is "b1" ==> within getTitle() "this" refers to b1
+
+"this" => context
+
+all fields and methods are "public" by default
 
 
 
+class Book {
+	private title:string; // instance variable
+	private price:number; // instance variable
+
+	constructor(title:string = "", price:number = 0.0) {
+		this.title = title;
+		this.price = price;
+	}
+
+	// instance method
+	getTitle() {
+		return this.title;
+	}
+
+}
 
 
+let b1 = new Book("typescript", 1200.00); ==> memory is allocated for title and price
+let b2 = new Book("express", 4200.00); ==> memory is allocated for title and price
+ 
+b1.getTitle(); // is valid
+
+console.log(b1.title); // error ==> title is private
+
+console.log(b1["title"]); // accessable  ==> even if title is private
+
+==
+
+ES 6 introduced # to declare private fields
+
+class Book {
+	 #title:string; // private instance variable
+	 private price:number; // instance variable
+
+	constructor(title:string = "", price:number = 0.0) {
+		this.#title = title;
+		this.price = price;
+	}
+
+	// instance method
+	getTitle() {
+		return this.#title;
+	}
+
+}
 
 
+let b1 = new Book("typescript", 1200.00); ==> memory is allocated for title and price
+let b2 = new Book("express", 4200.00); ==> memory is allocated for title and price
+ 
+b1.getTitle(); // is valid
+
+console.log(b1.#title); // error ==> title is private
+
+console.log(b1["#title"]); // error ==> title is private
+
+=================
+
+class Book {
+	// instance var declare and intialize
+	constructor(private title:string, private price:number = 0.0) {}
+	// instance method
+	getTitle() {
+		return this.#title;
+	}
+}
+
+============
+
+class Product {
+	constructor(public id:number, public name: string) {}
+}
+
+// inheritance
+class Mobile extends Product {
+	connectivity:string;
+	constructor(id:number, name:string, con:string) {
+		super(id,name); // chain to base class constructor
+		this.connectivity  = con;
+	}
+}
+
+let m = new Mobile(12,"iPhone", "4G");
+
+==================
+
+keyword: ==> "protected" ==> private to class and inherited class
+
+==============================================
+
+abstract class Product {
+	constructor(public id:number, public name: string) {}
+	getName() {
+		return this.name;
+	}
+	abstract isExpensive():boolean;
+}
+
+let p1 = new Product(3,"Pixel2"); // error can't instante abstract class
 
 
+class Mobile extends Product {
+	connectivity:string;
+	constructor(id:number, name:string, con:string) {
+		super(id,name); // chain to base class constructor
+		this.connectivity  = con;
+	}
+	isExpensive(): boolean {
+		logic and return boolean type
+	}
+}
+
+let m = new Mobile(12,"iPhone", "4G");
+m.getName(); // valid
+m.isExpensive(); 
+
+================================================
+static ==> class member
+
+class BankingAccount {
+	private static count:number = 0; // class variable
+	constructor(private id:number, private name:string) {
+		count++;
+	}
+
+	static getCount() {
+		return count;
+	}
+}
+
+console.log(BankingAccount.getCount()); // 0
+
+let b1 = new BankingAccount(33,"a");
+console.log(BankingAccount.getCount()); // 1
+let b2 = new BankingAccount(34,"b");
+console.log(BankingAccount.getCount()); // 2
+
+====================================================
+
+JavaScript modules in Typescript
+
+1) npm i lodash
+
+chart.js, nvd3.js
+
+installs js library in node_modules
+
+create src/typings.d.ts
+
+declare module 'lodash' {
+    export function random(min:number, max:number): number
+}
+
+
+index.ts
+import {random} from 'lodash';
+
+console.log(random(1,100));
+
+2) Scenario where lodash is included as <script></script> in index.html
+
+declare var random:any
+console.log(random(1,100));
+
+3) install typedefinitions
+npm i @types/lodash -D
+
+======
+
+NodeJs modules using TS
+
+npm i -D @types/node
+
+
+server.ts
+
+import fs, {ReadStream} from 'fs';
+import {createServer, Server, IncomingMessage, ServerResponse} from 'http';
+
+const server:Server = createServer((request:IncomingMessage, response: ServerResponse) => {
+    switch(request.url) {
+        case "/file" :
+            const stream:ReadStream = fs.createReadStream("./src/server.ts");
+            stream.on("data", (chunk:string) => {
+                response.write(chunk);
+            });
+            stream.on("end", () => {
+                response.end();
+            });
+            break;
+        case "/":
+            response.end("Hello World!!!");
+    }
+});
+
+server.listen(1234);
+
+===============================================
 
 
 

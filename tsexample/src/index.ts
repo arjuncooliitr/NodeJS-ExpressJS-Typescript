@@ -1,5 +1,9 @@
+import {random} from 'lodash';
+
 import {forEach, fibanocci, memoize} from './lib';
 import Product  from './Product';
+
+console.log(random(1,100));
 
 let nos:number[] = [5,6,2,11,4];
 
