@@ -7,7 +7,7 @@ export function forEach<T>(elems:T[], action:(elem: T) => void): void {
 }
 
 export function filter<T>(elems:T[], predicate:(elem:T) => boolean): T[] {
-    let result:T[] = [];
+    const result:T[] = [];
     forEach(elems, elem => {
         if(predicate(elem)) {
             result.push(elem);
@@ -23,7 +23,7 @@ export function fibanocci(no:number) : number {
 type FunctionType<T, R> = (arg:T) => R;
 
 export function memoize<T, R>(fn: FunctionType<T,R>) {
-    var cache: {T?, R?} = {};
+    const cache: {T?, R?} = {};
     return function(args) {
         if(!cache[args]) {
             cache[args] = fn(args);

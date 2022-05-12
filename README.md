@@ -1310,7 +1310,41 @@ const server:Server = createServer((request:IncomingMessage, response: ServerRes
 server.listen(1234);
 
 ===============================================
+ // "allowJs": true,
 
+Employee.js
+
+export class Employee {
+
+}
+
+
+index.ts
+
+import {Employee} from 'Employee';
+
+=====================================================
+
+Testing of "ts" files
+JS unit testing libraries: mocha, jest, jasmine
+
+npm i jest @types/jest ts-jest -D
+
+============
+
+import axios from 'axios';
+const mockAxios = jest.mock(axios);
+
+========================
+
+Static code analysis ==> linting
+
+ESLint, TSList [ no longer supported]
+
+npm i -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+
+
+https://eslint.org/docs/rules/
 
 
 
