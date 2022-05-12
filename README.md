@@ -1432,11 +1432,63 @@ student will have firstName, lastName and subject
 ===================
 
 
+export function Course() {
+    return function(target:any) {
+        Object.defineProperty(target.prototype, "subject", {"value": "ExperssJS"})
+    }
+}
+
+@Course()
+class Student {
+	firstName
+	lastName
+}
+
+====================
+
+function Student(fn, ln) {
+	this.firstName = fn;
+	this.lastName = ln;
+}
+
+Student.prototype.getName = function() {
+	return this.firstName;
+}
 
 
 
+========
 
 
+export function Course(config:any) {
+    return function(target:any) {
+        Object.defineProperty(target.prototype, "subject", {"value": config.name})
+    }
+}
+
+@Course({
+	name: 'NodeJS'
+})
+class Student {
+	firstName
+	lastName
+}
+
+==
+
+class Some {
+	get firstName() {
+		return "test";
+	}
+
+	set firstName(a) {}
+}
+
+let s = new Some();
+console.log(s.firstName); // get
+s.firstName = "Ashok"; // set
+
+============
 
 
 

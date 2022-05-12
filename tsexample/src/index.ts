@@ -5,6 +5,12 @@ import Product  from './Product';
 
 import Student from './Student';
 
+import User from './User';
+
+let u:User = new User("harry", "potter");
+
+console.log(u.firstName, u.lastName);
+
 let s:Student = new Student("James");
 console.log(s.firstName, s["subject"]);
 
