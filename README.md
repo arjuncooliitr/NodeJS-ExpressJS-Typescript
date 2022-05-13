@@ -1711,6 +1711,54 @@ HMACSHA256(
 
 ==============
 
+npm i -D @types/jsonwebtoken
+
+
+===
+REgister a User
+
+POST http://localhost:3000/register
+Accept: application/json
+Content-type: application/json
+
+Body:
+{
+    "email": "me@gmail.com",
+    "password": "secret123"
+}
+
+==
+
+Login
+
+POST http://localhost:3000/login
+Accept: application/json
+Content-type: application/json
+
+Body:
+{
+    "email": "me@gmail.com",
+    "password": "secret123"
+}
+
+Response:
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtZUBnbWFpbC5jb20iLCJpc3MiOiJhZG9iZSIsImlhdCI6MTY1MjQyNzAwMH0.kVWr66NUFYVSJhmjgr60bed9EYbX40DzvcW4fShI3go"
+}
+
+===
+
+Protected REsources
+
+GET: http://localhost:3000/products
+Accept: application/json
+
+Header
+
+Autorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtZUBnbWFpbC5jb20iLCJpc3MiOiJhZG9iZSIsImlhdCI6MTY1MjQyNzAwMH0.kVWr66NUFYVSJhmjgr60bed9EYbX40DzvcW4fShI3go
+
+
+
 
 
 
