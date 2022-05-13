@@ -1554,14 +1554,73 @@ ExpressJS
 expressapp> npm init --y
 expressapp> npm i typescript dotenv body-parser cookie-parser express jsonwebtoken
 expressapp> npm i -D @types/body-parser @types/cookie-parser @types/express ts-node
+expressapp> tsc --init
+
+=================================
+
+ExpressJS
+* middleware framework for NodeJS
+* simplify application development
+1) Traditional web application
+	pages are rendered on server and sent to client
+	SSR ==> data [representation of documents of mongoDB or Rows of MySQL] to presentation [ HTML]
+2) Serve static pages
+3) Build RESTful web services [ CSR ]
+	representation of data is served to clients in various formats [ JSON / XML / ATOM /CSV ]
+	seperatation of client-server 
+	clients can be Web clients [ React, Angular, Vue], Swift, Android, Standalone app, WebOS,..
+4) GraphQL services	==> Apollo Server
 
 
+RESTful Web Services
+* uses http protocol
+* Uniform URI to identify a Resources [ plural nouns]
+* actions are identified using HTTP verbs [ GET, POST, PUT, DELETE]
+
+GET
+http://localhost:8080/api/products
+
+get all products
+
+--
+GET
+http://localhost:8080/api/products/3
+
+get product whose id is 3
+pathparameter "/" to get by Unique id or sub resource
+
+http://localhost:8080/api/customers/banu@gmail.com/orders
+
+--
+GET
+to get subset / filterd ==> Query Parameter
+http://localhost:8080/api/products?category=mobile
+http://localhost:8080/api/products?page=2&size=20
+
+------------
 
 
+POST
+http://localhost:8080/api/products
+
+payload from client will contain data which is added to "products"
+	
+
+----------
+
+PUT
+http://localhost:8080/api/products/2
+
+payload from client will contain data which is updated to "products" with id 2
 
 
+--
+DELETE
+http://localhost:8080/api/products/2
 
+delete a product whose id is 2
 
+----------------------------------------
 
 
 
