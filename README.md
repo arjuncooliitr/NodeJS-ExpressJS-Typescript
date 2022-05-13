@@ -1758,6 +1758,23 @@ Header
 Autorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtZUBnbWFpbC5jb20iLCJpc3MiOiJhZG9iZSIsImlhdCI6MTY1MjQyNzAwMH0.kVWr66NUFYVSJhmjgr60bed9EYbX40DzvcW4fShI3go
 
 
+============================
+
+express ==> MiddleWare ==> Route ==> MiddleWare ==> Controller ==> Service ==> Mongodb/mysql
+
+jsonwebtoken ==>  token based authorization
+
+===========================
+
+http://localhost:3000/products?category=mobile
+
+====
+
+
+
+
+
+
 
 
 
