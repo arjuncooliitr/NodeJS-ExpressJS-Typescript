@@ -1488,7 +1488,37 @@ let s = new Some();
 console.log(s.firstName); // get
 s.firstName = "Ashok"; // set
 
-============
+===================================
+
+https://www.typescriptlang.org/docs/handbook/decorators.html
+
+==========
+
+ExpressJS + MongoDB
+
+MERN or MEAN
+
+MongoDB
+Express
+React / Angular
+Node
+
+Docker Desktop
+
+docker run --name some-mongo -d mongo:latest -p 27017:27017
+
+docker cp employees.json some-mongo:/tmp/employees.json
+
+docker exec -it some-mongo bash
+
+# mongoimport --db sales_db --collections employees --file tmp/employees.json
+
+
+============================
+
+
+
+
 
 
 
