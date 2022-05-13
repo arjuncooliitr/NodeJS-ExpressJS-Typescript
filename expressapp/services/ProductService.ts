@@ -28,4 +28,4 @@ class ProductService {
     }
 }
 
-export default new ProductService(); // singleton instance
+export default new ProductService();  
