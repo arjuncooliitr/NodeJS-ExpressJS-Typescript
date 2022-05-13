@@ -1627,6 +1627,91 @@ delete a product whose id is 2
 * Docker Desktop
 
 --------------
+"start" : "node dist/api/app.js"
+
+npm run build
+npm start
+
+OR using ts-node
+
+"start" : "ts-node ./api/app.ts",
+
+
+http://localhost:3000/
+http://localhost:3000/products
+http://localhost:3000/products/1
+
+--
+
+Postman
+
+POST http://localhost:3000/products
+
+Headers:
+Accept: text/plain
+Content-type: application/json
+
+Body:
+select raw
+incomplete:
+{
+	"price": 1234.33
+}
+
+or:
+{
+    "id": 10,
+    "name": "Sony Tv",
+	"price": 123492.33,
+    "category" : "tv"
+}
+
+==============================
+
+Session Tracking
+
+Http protocol is a stateless protocol
+
+Client Request ==> request, response objects are created; once response is commited to client they are destroyed
+
+RESTful
+* client - server
+* Uniform Uri
+* Stateless
+
+JWT ==> Json Web Token
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.
+SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+
+HEADER:
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+
+Payload: contains claims
+
+{
+  "sub": "1234567890", // who you are
+  "name": "John Doe",
+  "iat": 1516239022 // issued at
+  "exp": 1516239099 // exp
+  "iss": "adobe",
+  "authorities": ["admin", "user"]
+}
+
+VERIFY:
+HMACSHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  mytopsecret
+) secret base64 encoded
+
+==============
+
+
 
 
 

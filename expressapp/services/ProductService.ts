@@ -14,7 +14,7 @@ class ProductService {
         })
     }
 
-    getProductById(id:number): Promise<IProduct> {
+    getProductById(id:number): Promise<IProduct | undefined> {
         return new Promise((resolve, reject) => {
             resolve(this.products.find(p => p.id === id));
         })

@@ -1,5 +1,4 @@
 import express, {Request, Response} from 'express';
-
 import {Server, createServer} from 'http';
 
 import {ProductRoutes} from './routes/ProductRoutes';
@@ -7,7 +6,8 @@ import {ProductRoutes} from './routes/ProductRoutes';
 const app: express.Application = express();
 const server:Server = createServer(app);
 
-app.use(express.json()) ; // string -> json conversion
+// middleware
+app.use(express.json()); // string -> json conversion
 
 // http://localhost:3000/
 app.get("/", (req:Request, response: Response) => {

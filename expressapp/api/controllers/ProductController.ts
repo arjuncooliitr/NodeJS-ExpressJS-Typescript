@@ -7,13 +7,13 @@ export class ProductController {
         const products = await ProductService.getProducts(); 
         res.status(200).send(products);
     }
-    //http://localhost:8080/api/products/3
+    //http://localhost:3000/api/products/3
     async getProductById(req:Request, res: Response) {
         const product = await ProductService.getProductById(+req.params.id);
         res.status(200).send(product);
     }
 
-    //http://localhost:8080/api/products/
+    //http://localhost:3000/api/products/
     // payload contains product data
     async createProduct(req:Request, res: Response) {
         const msg = await ProductService.addProduct(req.body);
