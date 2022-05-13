@@ -1516,6 +1516,52 @@ docker exec -it some-mongo bash
 
 ============================
 
+Day 5
+
+Day 4: ==> Typescript, using JS in TS, JEST unit testing framework, class, Decorators
+
+"ts-node"
+npm i -g ts-node
+ts-node script.ts
+
+OR
+
+npx ts-node script.ts
+
+----
+
+TSDX
+
+npx tsdx create myproject
+
+-------------------------------------------
+
+https://createapp.dev/ ==> for scaffolding code 
+
+---------------------------------------------------
+
+JavaScript build tools
+* Grunt == gruntfile.js
+* Gulp == gulp
+* Webpack == webpack.config.js
+
+Automate running scripts ==> clean, compile, test, lint , minfify, uglify, bundle ...
+
+--------------------------------
+
+ExpressJS
+
+expressapp> npm init --y
+expressapp> npm i typescript dotenv body-parser cookie-parser express jsonwebtoken
+expressapp> npm i -D @types/body-parser @types/cookie-parser @types/express ts-node
+
+
+
+
+
+
+
+
 
 
 
