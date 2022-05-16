@@ -1770,6 +1770,89 @@ http://localhost:3000/products?category=mobile
 
 ====
 
+Day 6
+
+Recap on ExpressJS
+--> middleware web framework for NodeJS
+--> Simplfies traditional web application dev [ SSR]
+--> RESTful web services
+
+new express(); 
+
+Routes
+ProductRoute.ts
+UserRoute.ts
+
+Middleware ==> (req:Request, res: Response, next: NextFunction) {}
+next(); ==> next handler which matches URL pattern [ could be other middlerware or API]
+Examples of built-in:
+app.use(express.json()); // payload to json content-type:application/json JSON.parse(..);
+app.use(cookieParser());
+app.use(cors());
+
+Jsonwebtoken ==> tokenGuard.ts as middleware [ Before Route ]
+ProductValidatorMiddleware ==> [Route and Controller]
+
+------------------------------------------------------
+Docker Desktop
+
+=================================
+
+* Serve static pages
+* SSR ==> Server Side Rendering
+	data is read from backend and pages are rendered on Server and sent to client
+	Librarires for SSR
+	* EJS <%= data %>
+	* JADE
+	* PUG
+	* Handlebars #data
+	* Mustache {{data}}
+
+expressapp> npm i ejs
+
+
+====================
+
+$ docker run --name some-mongo -d mongo -p 27017:27017
+
+$ docker cp employees.json some-mongo:/tmp/employees.json
+
+MongoDB ==> NoSQL database ==> It's not RDBMS [ tables with relationship using Foreign key]
+
+MongoDB 		RDBMS
+database 	    database
+collection		table
+document 		row
+BSON
+
+===
+
+
+
+$ docker run --name some-mongo  -p 27017:27017 -d mongo
+
+$ docker cp employees.json some-mongo:/tmp/employees.json
+
+Access mongodb Container 
+$ docker exec -it some-mongo bash
+root@8c738f59839c:/# mongoimport --db employees_db --collection employees --file tmp/employees.json
+
+root@8c738f59839c:/# mongosh
+test> use employees_db
+employees_db> show collections
+employees
+employees_db> db.employees.find()
+
+Where clause
+employees_db> db.employees.find({company:'Adobe'})
+
+select name, company from employees where company='Adobe'
+employees_db> db.employees.find({company:'Adobe'}, {name:1,company:1})
+
+
+
+
+
 
 
 

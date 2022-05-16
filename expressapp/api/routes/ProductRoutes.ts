@@ -8,6 +8,7 @@ export class ProductRoutes {
     constructor(private app: express.Application){}
 
     configureRoutes(): express.Application {
+    
         //http://localhost:8080/products
         this.app.route('/products')
             .get(ProductController.listProducts)
