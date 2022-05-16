@@ -1849,6 +1849,40 @@ employees_db> db.employees.find({company:'Adobe'})
 select name, company from employees where company='Adobe'
 employees_db> db.employees.find({company:'Adobe'}, {name:1,company:1})
 
+===
+
+expressapp> npm i mongoose 
+
+===================
+
+http server ==> express ==> MongoDB Driver => MongoDB
+
+MongoDB NodeJS Driver
+
+Mongoose is a MongoDB object modeling tool ODM ==> similar to ORM
+
+Object is JS object ==> map to Document of MongoDB 
+
+Simplifies CRUD operations
+
+===============================================
+
+Schema:
+Everything in Mongoose starts with a Schema. Each schema maps to a MongoDB collection
+
+
+model: for ==> CRUD operations
+
+mongoose.model('Tank', schema);  
+
+mongoose.connect('mongodb://localhost:27017/myapp');
+
+===========================
+
+
+
+
+
 
 
 

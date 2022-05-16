@@ -5,11 +5,16 @@ import {ProductRoutes} from './routes/ProductRoutes';
 import { UserRoutes } from './routes/UserRoutes';
 import IProduct from '../models/IProduct';
 import path from 'path';
+import { EmployeeRoutes } from './routes/EmployeeRoutes';
+import mongoose from 'mongoose';
 const app: express.Application = express();
 const server:Server = createServer(app);
 
-app.use(express.static('public'))
+mongoose.connect('mongodb://localhost:27017/employees_db').then(() => {
+    console.log("mongodb connection done!!!");
+});
 
+app.use(express.static('public'))
 app.set('views', path.join(__dirname, '/views')); // by default
 
 app.set("view engine", "ejs");
@@ -35,6 +40,7 @@ app.get("/productView", (req:Request, response: Response) => {
 });
 
 new UserRoutes(app).configureRoutes();
+new EmployeeRoutes(app).configureRoutes();
 
 app.use(tokenGuard);
 
