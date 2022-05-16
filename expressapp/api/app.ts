@@ -7,6 +7,11 @@ import IProduct from '../models/IProduct';
 import path from 'path';
 import { EmployeeRoutes } from './routes/EmployeeRoutes';
 import mongoose from 'mongoose';
+
+import dotenv from 'dotenv';
+dotenv.config();
+
+console.log("env", process.env);
 const app: express.Application = express();
 const server:Server = createServer(app);
 

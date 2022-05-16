@@ -1877,7 +1877,130 @@ mongoose.model('Tank', schema);
 
 mongoose.connect('mongodb://localhost:27017/myapp');
 
-===========================
+==============================================================
+
+npm i dotenv
+
+====================================
+
+Monorepo
+
+NPM packages are developed in lots of small Github repos.
+
+I am working in #5 and #6 repo, ignore pull requests from #8 repo
+
+npm i repo_8
+
+====
+
+Monorepo ==> single repo will contain all the code for a given project
+
+Advantages:
+* Single soource of truth
+* Code reuse
+* Atomic changes
+
+Project 1 refers Project 2 
+
+============================================
+
+Monorepo tools:
+* Lerna
+* Rush
+* Manually configure using NPM / YARN
+
+npm i -g @microsoft/rush
+
+npm i -g pnpm
+
+================================
+
+rushexample>rush init
+
+rushexample>md hello
+rushexample>cd hello
+rushexample/hello>pnpm init [ similar to npm init --y]
+rush.json
+ {
+    "packageName": "hello",
+    "projectFolder": "hello"
+  }
+
+run in any terminal
+rush update
+
+adding dependencies for hello project/module
+
+rushexample/hello>rush add -p express   [npm i express]
+rushexample/hello>rush add -p typescript --dev
+rushexample/hello>rush add -p @types/express --dev
+rushexample/hello>rush add -p @types/node --dev
+rushexample/hello>tsc --init
+
+rushexample/hello>rush add -p ts-node --dev
+
+
+package.json
+ "build" : "tsc",
+  "start": "ts-node src/index.ts",
+
+
+ hello/src/index.ts
+ 
+ import express from 'express';
+
+const app = express();
+
+app.get("/", (req, res) => {
+    res.send("Hello Rush!!!");
+});
+
+app.listen(3000, () => {
+    console.log("server started!!!");
+});
+
+---
+
+Running npm scritps with Rush
+
+rushexample/hello>rushx start
+
+----
+
+Adding other modules into monorepo
+
+md lib
+cd lib
+rushexample/lib>pnpm init
+rushexample/lib>tsc --init
+update rush.json to specify this project also
+ {
+    "packageName": "@shared/lib",
+    "projectFolder": "lib"
+  }
+
+rush update ==> from any terminal of the project
+rushexample/lib>rush add -p lodash
+rushexample/lib>rush add -p @types/lodash --dev
+
+in hello module
+"dependencies": {
+    "lib": "workspace:*",
+
+rushexample/lib>tsc --init
+
+====================
+
+
+
+
+
+
+
+
+
+
+
 
 
 
